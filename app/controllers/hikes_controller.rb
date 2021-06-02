@@ -1,0 +1,3 @@
+class HikesController < ApplicationController
+
+end
