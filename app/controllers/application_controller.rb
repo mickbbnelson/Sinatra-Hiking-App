@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base   #Application controller ingerits t
     set :views, 'app/views'
   end
 
-  get "/" do      #Initial "/" route
+  get '/' do
     erb :welcome
   end
 
