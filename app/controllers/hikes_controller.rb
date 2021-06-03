@@ -22,6 +22,7 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/:id/edit" do
-        erb :"/hikes/edit.html"        
+         @hike = Hike.find(params[:id])   
+         erb :"/hikes/edit.html"
     end
 end

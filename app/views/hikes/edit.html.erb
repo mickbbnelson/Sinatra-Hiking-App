@@ -1,0 +1,11 @@
+<h2> Editing <%= @hike.location %></h2>
+<form method="patch" action="/hikes/:id"><br>
+<input type="hidden" name="_method" value="PATCH"/>
+<label> Location: </label>
+<input id="location" type="text" name="location" value="<%=@hike.location%>">
+<label> Distance in Miles: </label>
+<input id="distance" type="text" name="distance" value="<%=@hike.distance%>">
+<label> Terrain: </label>
+<input id="terrain" type="text" name="terrain" value="<%=@hike.terrain%>">
+<input type="submit" id="submit" value="Update">
+</form>
