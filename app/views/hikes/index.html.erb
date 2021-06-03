@@ -1,4 +1,6 @@
 <h1>Hike Summary:</h1>
 <% @hikes.each do |h| %>
-<h2><a href="/hikes/<%=h.id%>"><%= h.location %></a></h2>
+<h4><a href="/hikes/<%=h.id%>"><%= h.location %></a></h4>
 <% end %>
+<br>
+<h3><a href="/hikes/new">Record a New Hike</a></h3>
