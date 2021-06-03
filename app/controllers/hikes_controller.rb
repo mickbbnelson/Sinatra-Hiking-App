@@ -6,7 +6,6 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/new" do
-
         erb :"/hikes/new.html"
     end
 
@@ -22,7 +21,17 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/:id/edit" do
-         @hike = Hike.find(params[:id])   
+         @hike = Hike.find(params[:id])  
          erb :"/hikes/edit.html"
+    end
+
+    patch "/hikes/:id" do
+        @hike = Hike.find(params[:id])
+        @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
+        redirect :"/hikes/#{@hike.id}"
+    end
+
+    delete "/hikes/:id" do 
+
     end
 end
