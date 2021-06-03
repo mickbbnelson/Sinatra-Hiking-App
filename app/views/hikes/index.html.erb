@@ -1,4 +1,4 @@
 <h1>Hike Summary:</h1>
 <% @hikes.each do |h| %>
-<h2><%= h.location %></h2>
+<h2><a href="/hikes/<%=h.id%>"><%= h.location %></a></h2>
 <% end %>

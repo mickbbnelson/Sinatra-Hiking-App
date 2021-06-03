@@ -16,8 +16,12 @@ class HikeController < ApplicationController
     end
 
     post "/hikes" do
-        @hike = Hike.new(params)
-        @hike.save
-        redirect "hikes"
+        hike = Hike.new(params)
+        hike.save
+        redirect "/hikes"        #redirects to /hikes route
+    end
+
+    get "/hikes/:id/edit" do
+        erb :"/hikes/edit.html"        
     end
 end
