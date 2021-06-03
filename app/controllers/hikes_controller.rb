@@ -33,6 +33,7 @@ class HikeController < ApplicationController
 
     delete "/hikes/:id" do 
         @hike = Hike.find(params[:id])
-        @hike.clear
+        @hike.destroy
+        redirect :"/hikes"
     end
 end

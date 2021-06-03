@@ -5,4 +5,8 @@
 <br>
 <a href="/hikes/<%=@hike.id%>/edit">Edit Hike Info</a><br>
 <br>
+<form method="POST" action="/hikes/<%=@hike.id%>">
+<input type="hidden" name="_method" value="DELETE"/>
+<input type="submit" id="delete" value="Delete Hike">
+</form><br>
 <a href="/hikes">Return to List of Hikes</a>
