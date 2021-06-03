@@ -2,7 +2,7 @@ class HikeController < ApplicationController
 
     get "/hikes" do
         @hikes = Hike.all 
-        erb :"/hikes/index.html"
+        erb :"hikes/index.html"
     end
 
     get "/hikes/new" do
@@ -13,5 +13,11 @@ class HikeController < ApplicationController
     get "/hikes/:id" do
         @hike = Hike.find_by_id(params[:id])
         erb :"/hikes/show.html"
+    end
+
+    post "/hikes" do
+        @hike = Hike.new(params)
+        @hike.save
+        redirect "hikes"
     end
 end
