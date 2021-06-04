@@ -9,7 +9,9 @@ class UserController < ApplicationController
         if !user.save
             redirect to "/sign_up"
         else
-            redirect to "/hikes"  #need to update
+            user.save
+            session[:user_id] = user.id
+            redirect to "/hikes"                #need to update
         end
     end
 end
