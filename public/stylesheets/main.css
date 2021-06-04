@@ -11,12 +11,19 @@
     width: 100%;
   }
 
-  /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: darkgoldenrod;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+  }
+
+  .topnav {
+    background-color: darkgreen;
+  }
+
+  li {
+    display: inline;
   }
 
   .wrapper {
@@ -113,3 +120,4 @@
     line-height: 24px;
   }
 }
+
