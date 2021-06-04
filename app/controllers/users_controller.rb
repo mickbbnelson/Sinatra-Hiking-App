@@ -14,4 +14,13 @@ class UserController < ApplicationController
             redirect to "/hikes"                #need to update
         end
     end
+
+    get "/log_out" do
+        erb :"/users/log_out.html"
+    end
+
+    post "/log_out" do
+        session.clear
+        redirect to "/sign_up"
+    end
 end
