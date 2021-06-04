@@ -6,6 +6,9 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/new" do
+        if !logged_in?
+            redirect to "/login"
+        end
         erb :"/hikes/new.html"
     end
 
@@ -21,6 +24,9 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/:id/edit" do
+        if !logged_in?
+            redirect to "/login"
+        end
          @hike = Hike.find(params[:id])  
          erb :"/hikes/edit.html"
     end
