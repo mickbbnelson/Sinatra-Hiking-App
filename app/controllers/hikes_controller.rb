@@ -18,7 +18,11 @@ class HikeController < ApplicationController
     end
 
     post "/hikes" do
+        if !logged_in?
+            redirect to "/login"
+        end
         hike = Hike.new(params)
+        hike.user_id = session[:user_id]
         hike.save
         redirect "/hikes"        #redirects to /hikes route
     end
@@ -38,6 +42,9 @@ class HikeController < ApplicationController
     end
 
     delete "/hikes/:id" do 
+        if !logged_in?
+            redirect to "/login"
+        end
         @hike = Hike.find(params[:id])
         @hike.destroy
         redirect :"/hikes"

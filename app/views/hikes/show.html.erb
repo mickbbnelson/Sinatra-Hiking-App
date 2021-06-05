@@ -3,6 +3,7 @@
 <h3>Distance: <%= @hike.distance %> miles</h3>
 <h3>Terrain Difficulty: <%= @hike.terrain %></h3>
 <br>
+<% if @hike.user_id == current_user.id %>
 <a href="/hikes/<%=@hike.id%>/edit">Edit Hike Info</a><br>
 <br>
 <form method="POST" action="/hikes/<%=@hike.id%>">
@@ -10,3 +11,4 @@
 <input type="submit" id="delete" value="Delete Hike">
 </form><br>
 <a href="/hikes">Return to List of Hikes</a>
+<% end %>

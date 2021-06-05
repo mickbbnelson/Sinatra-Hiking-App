@@ -30,11 +30,7 @@ class UserController < ApplicationController
     end
 
     get "/log_out" do
-        erb :"/users/log_out.html"
-    end
-
-    post "/log_out" do
         session.clear
-        redirect to "/sign_up"
+        redirect to "/login"
     end
 end
