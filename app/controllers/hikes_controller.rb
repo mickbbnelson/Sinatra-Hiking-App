@@ -43,8 +43,11 @@ class HikeController < ApplicationController
             redirect to "/login"
         end
         @hike = Hike.find(params[:id])
-            @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
-            redirect :"/hikes/#{@hike.id}"
+        if @hike.user_id != current_user.id
+            redirect to "/hikes"
+        end 
+        @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
+        redirect :"/hikes/#{@hike.id}"
     end
 
     delete "/hikes/:id" do 
@@ -52,6 +55,9 @@ class HikeController < ApplicationController
             redirect to "/login"
         end
         @hike = Hike.find(params[:id])
+        if @hike.user_id != current_user.id
+            redirect to "/hikes"
+        end 
         @hike.destroy
         redirect :"/hikes"
     end
