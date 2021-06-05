@@ -31,14 +31,20 @@ class HikeController < ApplicationController
         if !logged_in?
             redirect to "/login"
         end
-         @hike = Hike.find(params[:id])  
-         erb :"/hikes/edit.html"
+        @hike = Hike.find(params[:id]) 
+        if @hike.user_id != current_user.id
+            redirect to "/hikes"
+        end 
+        erb :"/hikes/edit.html"
     end
 
     patch "/hikes/:id" do
+        if !logged_in?
+            redirect to "/login"
+        end
         @hike = Hike.find(params[:id])
-        @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
-        redirect :"/hikes/#{@hike.id}"
+            @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
+            redirect :"/hikes/#{@hike.id}"
     end
 
     delete "/hikes/:id" do 
