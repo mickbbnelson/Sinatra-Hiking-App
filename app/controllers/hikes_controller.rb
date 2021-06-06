@@ -46,7 +46,7 @@ class HikeController < ApplicationController
         if @hike.user_id != current_user.id
             redirect to "/hikes"
         end 
-        @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"])
+        @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"], description: params["description"])
         redirect :"/hikes/#{@hike.id}"
     end
 

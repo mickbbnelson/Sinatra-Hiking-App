@@ -3,6 +3,8 @@
 <h3>Distance: <%= @hike.distance %> miles</h3>
 <h3>Terrain Difficulty: <%= @hike.terrain %></h3>
 <br>
+<p> Hike Description: <%= @hike.description %></p>
+<br>
 <% if @hike.user_id == current_user.id %>
 <a href="/hikes/<%=@hike.id%>/edit">Edit Hike Info</a><br>
 <br>
