@@ -22,9 +22,13 @@ class HikeController < ApplicationController
             redirect to "/login"
         end
         hike = Hike.new(params)
-        hike.user_id = session[:user_id]
-        hike.save
-        redirect "/hikes"        #redirects to /hikes route
+        if !hike.save
+            redirect to "hikes/new"
+        else
+            hike.user_id = current_user.id
+            hike.save
+            redirect "/hikes"        
+        end
     end
 
     get "/hikes/:id/edit" do
