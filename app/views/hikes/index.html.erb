@@ -1,12 +1,15 @@
-<h1>Hike Summary:</h1>
+<h1>Hikes:</h1>
 <% if logged_in? %>
 <h3> Current User: <%= current_user.name %></h3>
 <% end%>
+<br>
 <% @hikes.each do |h| %>
 <h4><a href="/hikes/<%=h.id%>"><%= h.location %></a></h4>
 <% end %>
 <br>
-<h3><a href="/hikes/new">Record a New Hike</a></h3><br>
+<p><a href="/hikes/new">Record a New Hike</a></p>
+<p><a href="/users/:id">Profile</a></p>
 <form method="GET" action="/log_out">
 <input type="submit" value="Log Out">
 </form>
+

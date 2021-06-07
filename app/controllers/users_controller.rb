@@ -29,6 +29,11 @@ class UserController < ApplicationController
         end
     end
 
+    get "/users/:id" do
+        @user = current_user
+        erb :"/users/show.html"
+    end
+
     get "/log_out" do
         session.clear
         redirect to "/login"
