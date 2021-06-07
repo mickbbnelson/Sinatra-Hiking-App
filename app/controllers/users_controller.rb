@@ -6,11 +6,11 @@ class UserController < ApplicationController
 
     post "/sign_up" do
         user = User.new(params)
-        if !user.save
+        if !user.save                   #User won't save if all the validated criteria from Validates in the User class are not met.
             redirect to "/sign_up"
         else
             user.save
-            session[:user_id] = user.id
+            session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
             redirect to "/hikes"                #need to update
         end
     end
@@ -22,7 +22,7 @@ class UserController < ApplicationController
     post "/login" do
         user = User.find_by_username(params[:username])
         if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
+            session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
             redirect to "/hikes"
         else
             redirect to "/login"
