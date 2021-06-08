@@ -19,11 +19,17 @@
   }
 
   .topnav {
-    background-color: darkgreen;
+    background-color: lightseagreen;
   }
 
-  li {
+  .topnav ul {
+    text-align: center;
+  }
+
+  .topnav ul li {
     display: inline;
+    margin-right: 50px;
+    margin-left: 50;
   }
 
   .wrapper {
