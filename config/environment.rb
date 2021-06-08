@@ -2,6 +2,7 @@ ENV['SINATRA_ENV'] ||= "development"    #If the sinatra key is set as something,
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])   #requiring default with whatever version it is
+require 'dotenv/load'
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",

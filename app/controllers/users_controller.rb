@@ -30,6 +30,7 @@ class UserController < ApplicationController
     end
 
     get "/users/:id" do
+        binding.pry
         @user = current_user
         erb :"/users/show.html"
     end

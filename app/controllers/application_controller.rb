@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base   #Application controller ingerits t
     set :public_folder, 'public'    #Look into deleting this line after we finish up our project.
     set :views, 'app/views'
     enable :sessions              #gives us access to sessions
-    set :session_secret, "rwthwrhjwrjkilkdfewrgwe"              #Secures user info. look to add env file once project is finished
+    set :session_secret, ENV['SECRET']              #Secures user info. look to add env file once project is finished
   end
 
   get '/' do
