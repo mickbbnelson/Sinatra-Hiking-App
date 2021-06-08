@@ -2,3 +2,7 @@
 <h3>Name: <%= @user.name %></h3>
 <h3>Username: <%= @user.username %></h3>
 <h3>Email Address: <%= @user.email_address %></h3>
+<br>
+<% if session[:user_id] == @user.id  %>
+<a href="/users/<%=@user.id%>/edit">Edit User Info</a><br>
+<% end %>

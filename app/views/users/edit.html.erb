@@ -1,0 +1,14 @@
+<h2> Editing <%= @user.name %></h2>
+<form method="POST" action="/users/<%=@user.id%>"><br>
+<input type="hidden" name="_method" value="PATCH"/>
+<label> Name: </label>
+<input id="name" type="text" name="name" value="<%=@user.name%>">
+<label> Username: </label>
+<input id="username" type="text" name="username" value="<%=@user.username%>">
+<label> Email: </label>
+<input id="email_address" type="text" name="email_address" value="<%=@user.email_address%>">
+<label> Password: </label>
+<input id="password" type="password" name="password" value="<%=@user.password%>">
+<br>
+<input type="submit" id="submit" value="Update">
+</form>

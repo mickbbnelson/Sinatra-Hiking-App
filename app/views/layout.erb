@@ -16,9 +16,16 @@
   <body>
     <div class="topnav">
     <ul>
+      <% if !logged_in? %>
+      <li><a href="/login">Login</a></li> 
+      <li><a href="/sign_up">Sign Up</a></li> 
+      <% end %>
+      <% if logged_in? %>
       <li><a href="/hikes">All Hikes</a></li> 
+      <li><a href="/hikes/new">Add Hike</a></li> 
       <li><a href="/users/:id">Profile</a></li>
       <li><a href="/log_out">Log Out</a></li>
+      <% end %>
       </ul>
     </div>
     <div class="wrapper">
