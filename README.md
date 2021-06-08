@@ -1,6 +1,6 @@
 #
 
-Welcome to the Sinatra Hike Application!  This application will allow you to view trail information from different hiking locations posted by other application users.  Once you create an account, you will be able to record details about hikes that you went on for other users to view.  All account are secure so that each user can only edit details for the hikes that they posted.  
+Welcome to the Sinatra Hike Application!  This application will allow you to view trail information about different hiking locations posted by other application users.  Once you create an account, you will be able to record details about hikes that you went on for other users to view.  All accounts are secure so that each user can only edit details for the hikes that they posted.  
 
 ## Installation
 
