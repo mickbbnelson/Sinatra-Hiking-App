@@ -20,7 +20,7 @@ class UserController < ApplicationController
     end
 
     post "/login" do
-        user = User.find_by_username(params[:username])
+        user = User.find_by_username(params[:username])   
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
             redirect to "/hikes"
@@ -30,7 +30,7 @@ class UserController < ApplicationController
     end
 
     get "/users/:id" do
-        @user = current_user
+        @user = User.find(params[:id])
         erb :"/users/show.html"
     end
 
