@@ -1,3 +1,6 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <h1>Record your hike info here:</h1>
 <form method="post" action="/hikes"><br>
 <label> Location: </label>

@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class HikeController < ApplicationController
+    use Rack::Flash
 
     get "/hikes" do
         @hikes = Hike.all 
@@ -23,7 +26,8 @@ class HikeController < ApplicationController
         end
         hike = Hike.new(params)
         if !hike.save
-            redirect to "hikes/new"
+            flash[:message] = 'Please make sure to fill out all fields with valid information'
+            redirect to "/hikes/new"
         else
             hike.user_id = current_user.id
             hike.save
