@@ -1,4 +1,7 @@
+require 'rack-flash'
+
 class UserController < ApplicationController
+use Rack::Flash
 
     get "/sign_up" do
         erb :"/users/sign_up.html"
@@ -7,6 +10,7 @@ class UserController < ApplicationController
     post "/sign_up" do
         user = User.new(params)
         if !user.save                   #User won't save if all the validated criteria from Validates in the User class are not met.
+            flash[:message] = "Coul"
             redirect to "/sign_up"
         else
             user.save
@@ -23,6 +27,7 @@ class UserController < ApplicationController
         user = User.find_by_username(params[:username])   
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
+            flash[:login] = "Error message"
             redirect to "/hikes"
         else
             redirect to "/login"

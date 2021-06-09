@@ -12,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'              #Password protection
 gem 'tux'                 #Allows you to interact with helpers, view rendering and your apps response objects.
 gem 'dotenv'
+gem 'rack-flash3'     
 
 group :test do
   gem 'rspec'

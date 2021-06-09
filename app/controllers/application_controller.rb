@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base   #Application controller ingerits t
     set :views, 'app/views'
     enable :sessions              #gives us access to sessions
     set :session_secret, ENV['SECRET']              #Secures user info. look to add env file once project is finished
-    set :show_exceptions, false
+    #set :show_exceptions, false
   end
 
   not_found do
