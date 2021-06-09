@@ -10,7 +10,7 @@ use Rack::Flash
     post "/sign_up" do
         user = User.new(params)
         if !user.save                   #User won't save if all the validated criteria from Validates in the User class are not met.
-            flash[:message] = "Coul"
+            flash[:message] = 'Please make sure to fill out all fields with valid information'
             redirect to "/sign_up"
         else
             user.save
