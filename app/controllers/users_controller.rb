@@ -28,7 +28,7 @@ use Rack::Flash
         user = User.find_by_username(params[:username])   
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
-            flash[:login] = "Error message"
+            flash[:login] = 'Please make sure to fill out all fields with valid information'
             redirect to "/hikes"
         else
             redirect to "/login"
@@ -36,7 +36,7 @@ use Rack::Flash
     end
 
     get "/users/:id" do
-        
+
         @user = User.find(params[:id])
         erb :"/users/show.html"
     end
