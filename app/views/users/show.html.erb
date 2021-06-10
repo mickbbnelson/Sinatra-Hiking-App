@@ -2,6 +2,14 @@
 <h3>Name: <%= @user.name %></h3>
 <h3>Username: <%= @user.username %></h3>
 <h3>Email Address: <%= @user.email_address %></h3>
-<% if session[:user_id] == @user.id  %>
+<% if session[:user_id] == @user.id %>
+<br>
+<p>Hikes posted by this user: </p>
+<% Hike.all.each do |h|  %>
+<% if h.user_id == @user.id %>
+<p><a href="/hikes/<%=h.id%>"><%= h.location %></a></p>
+<% end %>
+<% end %>
+<br>
 <a href="/users/<%=@user.id%>/edit">Edit User Info</a><br>
 <% end %>
