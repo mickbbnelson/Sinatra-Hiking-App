@@ -16,7 +16,7 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/:id" do
-        @hike = Hike.find(params[:id])   #eas Hike.find_by_id(params[:id])
+        @hike = Hike.find(params[:id])   
         erb :"/hikes/show.html"
     end
 

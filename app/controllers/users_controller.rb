@@ -9,13 +9,13 @@ use Rack::Flash
 
     post "/sign_up" do
         user = User.new(params)
-        if !user.save                                       #User won't save if all the validated criteria from Validates in the User class are not met.
-            flash[:message] = 'Please make sure to fill out all fields with valid information' 
+        if !user.save                                      
+            flash[:message] = 'Please make sure to fill out all fields with valid information'
             redirect to "/sign_up"
         else
             user.save            
-            session[:user_id] = user.id                     #Assigns session key to user id.  Starts a session for that user.
-            redirect to "/hikes"                            #need to update
+            session[:user_id] = user.id                     
+            redirect to "/hikes"                            
         end
     end
 
@@ -27,7 +27,7 @@ use Rack::Flash
     post "/login" do
         user = User.find_by_username(params[:username])   
         if user && user.authenticate(params[:password])
-            session[:user_id] = user.id         #Assigns session key to user id.  Starts a session for that user.
+            session[:user_id] = user.id       
             flash[:login] = 'Please make sure to fill out all fields with valid information'
             redirect to "/hikes"
         else
