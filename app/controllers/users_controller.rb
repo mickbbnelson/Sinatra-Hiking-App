@@ -9,8 +9,8 @@ use Rack::Flash
 
     post "/sign_up" do
         user = User.new(params)
-        if !user.save                                      
-            flash[:message] = 'Please make sure to fill out all fields with valid information'
+        if !user.save                        
+            #flash[:message] = 'Please make sure to fill out all fields with valid information'
             redirect to "/sign_up"
         else
             user.save            
