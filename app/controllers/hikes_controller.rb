@@ -1,7 +1,4 @@
-require 'rack-flash'
-
 class HikeController < ApplicationController
-    use Rack::Flash
 
     get "/hikes" do
         @hikes = Hike.all 
