@@ -28,9 +28,9 @@ use Rack::Flash
         user = User.find_by_username(params[:username])   
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id       
-            flash[:login] = 'Please make sure to fill out all fields with valid information'
             redirect to "/hikes"
         else
+            flash[:message] = 'Please make sure to fill out all fields with valid information'
             redirect to "/login"
         end
     end
