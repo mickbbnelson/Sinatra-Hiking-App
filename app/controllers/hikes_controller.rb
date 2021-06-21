@@ -31,18 +31,14 @@ class HikeController < ApplicationController
     get "/hikes/:id/edit" do
         login_redirect
         @hike = Hike.find(params[:id]) 
-        if @hike.user_id != current_user.id
-            redirect to "/hikes"
-        end 
+        wrong_user_redirect 
         erb :"/hikes/edit.html"
     end
 
     patch "/hikes/:id" do
         login_redirect
         @hike = Hike.find(params[:id])
-        if @hike.user_id != current_user.id
-            redirect to "/hikes"
-        end 
+        wrong_user_redirect
         @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"], description: params["description"])
         redirect :"/hikes/#{@hike.id}"
     end
@@ -50,10 +46,15 @@ class HikeController < ApplicationController
     delete "/hikes/:id" do 
         login_redirect
         @hike = Hike.find(params[:id])
+        wrong_user_redirect
+        @hike.destroy
+        redirect :"/hikes"
+    end
+
+    private
+    def wrong_user_redirect
         if @hike.user_id != current_user.id
             redirect to "/hikes"
         end 
-        @hike.destroy
-        redirect :"/hikes"
     end
 end
