@@ -5,8 +5,8 @@ class ApplicationController < Sinatra::Base   #Application controller ingerits t
   use Rack::Flash
   
   configure do                    #connects our views to our controller
-    set :public_folder, 'public'    #Look into deleting this line after we finish up our project.
-    set :views, 'app/views'
+    set :public_folder, 'public'    
+    set :views, 'app/views'       #connects our views to our controller
     enable :sessions              #gives us access to sessions
     set :session_secret, ENV['SECRET']              #Secures user info. look to add env file once project is finished
     set :show_exceptions, false
@@ -32,6 +32,13 @@ class ApplicationController < Sinatra::Base   #Application controller ingerits t
 
     def logged_in?
       !!current_user
+    end
+  end
+
+  private
+  def login_redirect
+    if !logged_in?
+      redirect to "/login"
     end
   end
 end

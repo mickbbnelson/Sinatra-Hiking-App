@@ -6,21 +6,17 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/new" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         erb :"/hikes/new.html"
     end
 
     get "/hikes/:id" do
-        @hike = Hike.find(params[:id])   
+        @hike = Hike.find(params[:id]) 
         erb :"/hikes/show.html"
     end
 
     post "/hikes" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         hike = Hike.new(params)
         if !hike.save
             flash[:message] = 'Please make sure to fill out all fields with valid information'
@@ -33,9 +29,7 @@ class HikeController < ApplicationController
     end
 
     get "/hikes/:id/edit" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         @hike = Hike.find(params[:id]) 
         if @hike.user_id != current_user.id
             redirect to "/hikes"
@@ -44,9 +38,7 @@ class HikeController < ApplicationController
     end
 
     patch "/hikes/:id" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         @hike = Hike.find(params[:id])
         if @hike.user_id != current_user.id
             redirect to "/hikes"
@@ -56,9 +48,7 @@ class HikeController < ApplicationController
     end
 
     delete "/hikes/:id" do 
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         @hike = Hike.find(params[:id])
         if @hike.user_id != current_user.id
             redirect to "/hikes"

@@ -22,7 +22,7 @@ class UserController < ApplicationController
     end
 
     post "/login" do
-        user = User.find_by_username(params[:username])   
+        user = User.find_by_username(params[:username])  
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id       
             redirect to "/hikes"
@@ -33,15 +33,13 @@ class UserController < ApplicationController
     end
 
     get "/users/:id" do
-
+        login_redirect
         @user = User.find(params[:id])
         erb :"/users/show.html"
     end
 
     get "/users/:id/edit" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         @user = User.find(params[:id]) 
         if session[:user_id] != @user.id
             redirect to "/log_out"
@@ -50,9 +48,7 @@ class UserController < ApplicationController
     end
 
     patch "/users/:id" do
-        if !logged_in?
-            redirect to "/login"
-        end
+        login_redirect
         @user = User.find(params[:id])
         if session[:user_id] != @user.id
             redirect to "/log_out"
