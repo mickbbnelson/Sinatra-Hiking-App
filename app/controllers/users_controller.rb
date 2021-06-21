@@ -35,24 +35,21 @@ class UserController < ApplicationController
     get "/users/:id" do
         login_redirect
         @user = User.find(params[:id])
+        wrong_user_logout
         erb :"/users/show.html"
     end
 
     get "/users/:id/edit" do
         login_redirect
         @user = User.find(params[:id]) 
-        if session[:user_id] != @user.id
-            redirect to "/log_out"
-        end
+        wrong_user_logout
         erb :"/users/edit.html"
     end
 
     patch "/users/:id" do
         login_redirect
         @user = User.find(params[:id])
-        if session[:user_id] != @user.id
-            redirect to "/log_out"
-        end
+        wrong_user_logout
         @user.update(name: params["name"], username: params["username"], email_address: params["email_address"], password: params["password"])
         redirect :"/users/#{@user.id}"
     end
@@ -60,6 +57,13 @@ class UserController < ApplicationController
     get "/log_out" do
         session.clear
         redirect to "/login"
+    end
+
+    private
+    def wrong_user_logout
+        if session[:user_id] != @user.id
+            redirect to "/log_out"
+        end
     end
 
 end
