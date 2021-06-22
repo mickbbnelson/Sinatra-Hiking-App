@@ -51,7 +51,7 @@ class UserController < ApplicationController
         @user = User.find(params[:id])
         wrong_user_logout
         @user.update(name: params["name"], username: params["username"], email_address: params["email_address"], password: params["password"])
-        redirect :"/users/#{@user.id}"
+        redirect to "/users/#{@user.id}"
     end
 
     get "/log_out" do

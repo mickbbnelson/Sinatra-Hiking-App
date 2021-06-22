@@ -40,7 +40,7 @@ class HikeController < ApplicationController
         @hike = Hike.find(params[:id])
         wrong_user_redirect
         @hike.update(location: params["location"], distance: params["distance"], terrain: params["terrain"], description: params["description"])
-        redirect :"/hikes/#{@hike.id}"
+        redirect to "/hikes/#{@hike.id}"
     end
 
     delete "/hikes/:id" do 
@@ -48,7 +48,7 @@ class HikeController < ApplicationController
         @hike = Hike.find(params[:id])
         wrong_user_redirect
         @hike.destroy
-        redirect :"/hikes"
+        redirect to "/hikes"
     end
 
     private

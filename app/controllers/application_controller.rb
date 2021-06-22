@@ -1,12 +1,12 @@
 require 'rack-flash'
-require './config/environment'    #requires environment folder
+require './config/environment'    
 
-class ApplicationController < Sinatra::Base   #Application controller ingerits the funtionality of sinatra.
+class ApplicationController < Sinatra::Base   
   use Rack::Flash
   
-  configure do                    #connects our views to our controller
+  configure do                    
     set :public_folder, 'public'    
-    set :views, 'app/views'       #connects our views to our controller
+    set :views, 'app/views'       
     enable :sessions              #gives us access to sessions
     set :session_secret, ENV['SECRET']              #Secures user info. look to add env file once project is finished
     set :show_exceptions, false
