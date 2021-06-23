@@ -7,8 +7,8 @@ class ApplicationController < Sinatra::Base
   configure do                    
     set :public_folder, 'public'    
     set :views, 'app/views'       
-    enable :sessions              #gives us access to sessions
-    set :session_secret, ENV['SECRET']              #Secures user info. look to add env file once project is finished
+    enable :sessions              
+    set :session_secret, ENV['SECRET']              
     set :show_exceptions, false
   end
 
@@ -21,7 +21,7 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  error ActiveRecord::RecordNotFound do   #tells our routes to redirect to the home page if the user receivers th active record not found error.
+  error ActiveRecord::RecordNotFound do   
     redirect to "error.erb"
   end 
 

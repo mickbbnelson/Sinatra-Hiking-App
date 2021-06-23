@@ -10,11 +10,6 @@ class HikeController < ApplicationController
         erb :"/hikes/new.html"
     end
 
-    get "/hikes/:id" do
-        @hike = Hike.find(params[:id]) 
-        erb :"/hikes/show.html"
-    end
-
     post "/hikes" do
         login_redirect
         hike = Hike.new(params)
@@ -26,6 +21,11 @@ class HikeController < ApplicationController
             hike.save
             redirect "/hikes"        
         end
+    end
+
+    get "/hikes/:id" do
+        @hike = Hike.find(params[:id]) 
+        erb :"/hikes/show.html"
     end
 
     get "/hikes/:id/edit" do
